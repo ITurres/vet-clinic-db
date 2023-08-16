@@ -48,8 +48,8 @@ VALUES
 UPDATE animals
 SET
     species_id = CASE
-        WHEN name LIKE '%mon' THEN 1
-        ELSE 2
+        WHEN name LIKE '%mon' THEN 2
+        ELSE 1
     END
 WHERE
     name LIKE '%mon'
@@ -77,4 +77,3 @@ WHERE
         'Angemon',
         'Boarmon'
     );
-
