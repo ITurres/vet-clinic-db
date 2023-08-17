@@ -1,3 +1,4 @@
+-- * START OF project 1 queries * --
 SELECT
     animals.name
 FROM
@@ -57,7 +58,9 @@ WHERE
     animals.weight_kg >= 10.4
     AND animals.weight_kg <= 17.3;
 
---*--
+--  * END OF project 1 queries * --
+--!--
+-- * START OF project 2 queries * --
 BEGIN TRANSACTION;
 
 UPDATE animals
@@ -168,3 +171,78 @@ WHERE
     animals.date_of_birth BETWEEN '1990-01-01' AND '2000-01-01'
 GROUP BY
     animals.species;
+
+-- * END OF project 2 queries * --
+--!--
+-- * START OF project 3 queries * --
+SELECT
+    animals.name AS animals_owned_by_melody_pond
+FROM
+    animals
+    JOIN owners ON owners.id = animals.owner_id
+WHERE
+    owners.full_name = 'Melody Pond';
+
+SELECT
+    animals.name AS pokemons
+FROM
+    animals
+    JOIN species ON species.id = animals.species_id
+WHERE
+    species.name = 'Pokemon';
+
+SELECT
+    animals.name AS animal,
+    owners.full_name AS owner
+FROM
+    animals
+    FULL OUTER JOIN owners ON owners.id = animals.owner_id
+ORDER BY
+    owner;
+
+SELECT
+    COUNT(*) AS number_of_animals,
+    species.name AS species
+FROM
+    animals
+    JOIN species ON species.id = animals.species_id
+GROUP BY
+    species.name;
+
+SELECT
+    animals.name AS digimons_owned_by_jennifer_orwell
+FROM
+    animals
+    JOIN owners ON owners.id = animals.owner_id
+WHERE
+    animals.species_id = (
+        SELECT
+            id
+        FROM
+            species
+        WHERE
+            species.name = 'Digimon'
+    )
+    AND owners.full_name = 'Jennifer Orwell';
+
+SELECT
+    animals.name AS animals_owned_by_dean_winchester
+FROM
+    animals
+    JOIN owners ON owners.id = animals.owner_id
+WHERE
+    owners.full_name = 'Dean Winchester'
+    AND animals.escape_attempts = 0;
+
+SELECT
+    owners.full_name AS owner_with_most_animals,
+    COUNT(animals.owner_id) AS animals_owned
+FROM
+    owners
+    JOIN animals ON animals.owner_id = owners.id
+GROUP BY
+    owners.full_name
+ORDER BY
+    animals_owned DESC
+LIMIT
+    1;
