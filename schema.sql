@@ -53,10 +53,12 @@ CREATE TABLE
         CONSTRAINT fk_vet FOREIGN KEY (vet_id) REFERENCES vets (id) ON DELETE CASCADE
     );
 
---? animals was missing its primary key. 
---? PostgreSQL won't automatically set the column id as the primary key when it's added as a foreign key.
---! thus the ERROR: there is no unique constraint matching given keys for referenced table -animals-.
---? the error will occur when trying to reference the table animals in another table.
+--? The 'animals' table was missing its primary key.
+--? While PostgreSQL automatically designates the 'id' column as the primary key when using 'GENERATED ALWAYS AS IDENTITY',
+--? it doesn't automatically create a unique constraint on the column.
+--! This led to the error: "ERROR: there is no unique constraint matching given keys for referenced table 'animals'."
+--? This error occurs when attempting to reference the 'animals' table in another table.
+--* To resolve this issue and use the 'id' column as a foreign key reference, we need to explicitly add a unique constraint.
 ALTER TABLE animals ADD PRIMARY KEY (id);
 
 --* then:
