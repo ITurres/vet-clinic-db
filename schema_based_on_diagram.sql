@@ -41,7 +41,12 @@ CREATE TABLE invoice_items (
   PRIMARY KEY (id)
 );
 
+ALTER TABLE invoice_items
+ADD CONSTRAINT fk_in_treatment_id FOREIGN KEY (treatment_id) REFERENCES treatments(id) ON DELETE CASCADE;
+
 CREATE INDEX idx_invoice_items_invoice_id ON invoice_items(invoice_id);
+
+CREATE INDEX idx_invoice_items_treatment_id ON invoice_items(treatment_id);
 
 CREATE TABLE treatments (
     id INT GENERATED ALWAYS AS IDENTITY,
@@ -50,12 +55,13 @@ CREATE TABLE treatments (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE treatments_history (
+--* Junction table
+CREATE TABLE treatments_history ( 
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     medical_history_id INT,
     CONSTRAINT fk_medical_history_id FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id) ON DELETE CASCADE,
     treatment_id INT,
-    CONSTRAINT fk_treatment_id FOREIGN KEY (treatment_id) REFERENCES treatments(id) ON DELETE CASCADE
+    CONSTRAINT fk_th_treatment_id FOREIGN KEY (treatment_id) REFERENCES treatments(id) ON DELETE CASCADE
 );
 
 CREATE INDEX idx_treatments_history_medical_history_id ON treatments_history(medical_history_id);
