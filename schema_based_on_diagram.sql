@@ -24,7 +24,7 @@ CREATE TABLE invoices (
   medical_history_id INT,
   CONSTRAINT fk_medical_history_id FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id) ON DELETE CASCADE,
   PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE invoice_items (
   id INT GENERATED ALWAYS AS IDENTITY,
@@ -35,4 +35,19 @@ CREATE TABLE invoice_items (
   CONSTRAINT fk_invoice_id FOREIGN KEY (invoice_id) REFERENCES invoices(id) ON DELETE CASCADE,
   treatment_id INT NOT NULL,
   PRIMARY KEY (id)
-)
+);
+
+CREATE TABLE treatments (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    type VARCHAR(20) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE treatments_history (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    medical_history_id INT,
+    CONSTRAINT fk_medical_history_id FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id) ON DELETE CASCADE,
+    treatment_id INT,
+    CONSTRAINT fk_treatment_id FOREIGN KEY (treatment_id) REFERENCES treatments(id) ON DELETE CASCADE
+);
