@@ -16,6 +16,8 @@ CREATE TABLE patients (
 ALTER TABLE medical_histories
 ADD CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE;
 
+CREATE INDEX idx_medical_histories_patient_id ON medical_histories(patient_id);
+
 CREATE TABLE invoices (
   id INT GENERATED ALWAYS AS IDENTITY,
   total_amount DECIMAL(10,2) NOT NULL,
@@ -25,6 +27,8 @@ CREATE TABLE invoices (
   CONSTRAINT fk_medical_history_id FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id) ON DELETE CASCADE,
   PRIMARY KEY (id)
 );
+
+CREATE INDEX idx_invoices_medical_history_id ON invoices(medical_history_id);
 
 CREATE TABLE invoice_items (
   id INT GENERATED ALWAYS AS IDENTITY,
@@ -36,6 +40,8 @@ CREATE TABLE invoice_items (
   treatment_id INT NOT NULL,
   PRIMARY KEY (id)
 );
+
+CREATE INDEX idx_invoice_items_invoice_id ON invoice_items(invoice_id);
 
 CREATE TABLE treatments (
     id INT GENERATED ALWAYS AS IDENTITY,
