@@ -37,6 +37,10 @@
 
 - This project is intended to get familiar with relational databases, SQL, PostgreSQL, psql, and pgAdmin.
 
+<div align="center">
+    <img src="./vet-clinic-schema-diagram-erd.png" alt="vet-clinic-schema-diagram-erd" width="100%"  height="auto" />
+</div>
+
 ---
 
 #### Learning objectives
