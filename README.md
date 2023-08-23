@@ -41,6 +41,10 @@
     <img src="./vet-clinic-schema-diagram-erd.png" alt="vet-clinic-schema-diagram-erd" width="100%"  height="auto" />
 </div>
 
+<div align="center">
+    <img src="./clinic_diagram.png" alt="clinic-schema-diagram-erd" width="100%"  height="auto" />
+</div>
+
 ---
 
 #### Learning objectives
@@ -114,12 +118,18 @@ To run the project, execute the following command:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Author1**
+👤 **Arthur Iturres**
 
 - GitHub: [@ITurres](https://github.com/ITurres)
 - LinkedIn: [Arthur Emanuel G. Iturres](https://www.linkedin.com/in/arturoemanuelguerraiturres/)
 - Angellist / Wellfound: [Arturo (Arthur) Emanuel Guerra Iturres](https://wellfound.com/u/arturo-arthur-emanuel-guerra-iturres)
 - Youtube: [Arturo Emanuel Guerra Iturres - Youtube Channel](https://www.youtube.com/channel/UC6GFUFHOtBS9mOuI8EJ6q4g)
+
+👤 **Mathias Wismann**
+
+- GitHub: [@mwismann](https://github.com/mwismann)
+- Twitter: [@mathias_wismann](https://twitter.com/mathias_wismann)
+- LinkedIn: [Mathias Wismann](https://www.linkedin.com/in/mathias-wismann/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -129,11 +139,11 @@ To run the project, execute the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] query and update animals table.
-- [ ] query multiple tables.
-- [ ] add "join table" for visits.
-- [ ] database performance audit.
-- [ ] add database schema diagram.
+- [x] query and update animals table.
+- [x] query multiple tables.
+- [x] add "join table" for visits.
+- [x] database performance audit.
+- [x] add database schema diagram.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
